@@ -1,6 +1,12 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "auth != null",
+    "users": {
+    	".indexOn": ["user_id","email"]
+    },
+    "snaps":{
+    	".indexOn": ["title"]
+    }
   }
 }
