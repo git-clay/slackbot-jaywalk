@@ -172,3 +172,7 @@ request(host, function(err,res,body){
     }
   })
 })
+
+module.exports = {
+  slapp:slapp
+}

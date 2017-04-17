@@ -25,3 +25,7 @@ where.is('96.66.84.66', function(err, result) {
 });
 var ip = require("ip");
 console.dir ( ip.address() );
+
+module.exports = {
+    
+}

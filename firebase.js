@@ -64,3 +64,7 @@ DB get
 /*****************
 DB push
 *******************/
+
+module.exports = {
+	db:db
+}
