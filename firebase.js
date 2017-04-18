@@ -3,7 +3,9 @@ const request			 	= require('request'),
       firebase 			= require('firebase'),
       admin   			= require('firebase-admin'),
       serviceAccount= require("./serviceAccount.json"),
-      bodyParser 		= require('body-parser')
+      bodyParser 		= require('body-parser'),
+      rad     			= require('./radius.js'),
+      geofire 			= require('geofire')
 
 /*****************
 Firebase Setup
@@ -52,15 +54,21 @@ DB get
 //     })
 //   })
 /********************Snap queries************************/
-// let snapLat = snaps
-//   .orderByChild('title')
-//   .equalTo('Sixth St Tavern')
-//   .once('value')
-//   .then(function(snap){
-//     snap.forEach(function(data){
-//       console.log(data.key,data.val().radi)
-//     })
-//   })
+let testSnapLocation = rad.getRadius(35.5420586,-77.055535) //test: snap #1055
+console.log(testSnapLocation)
+let snapLat = snaps
+  .orderByChild('lat')
+  .startAt(testSnapLocation[5].lat+"-") // "-"makes a string for query
+  .endAt(testSnapLocation[1].lat+"-")
+  .once('value')
+  .then(function(snap){
+    snap.forEach(function(data){
+      if(data.val().lng<=testSnapLocation[0].lng && data.val().lng>=testSnapLocation[3].lng){
+      	console.log(data.val().title)
+      }
+    })
+  })
+
 /*****************
 DB push
 *******************/

@@ -1,13 +1,14 @@
 'use strict'
 
-const express = require('express'),
-      app     = express()
+const express     = require('express'),
+      app         = express(),
+      bodyParser  = require('body-parser')
 
 // Other js files
 const slackbot    = require('./slackbot.js'),
       firebase    = require('./firebase.js'),
       geolocation = require('./geolocation.js')
-      
+
 app.use(bodyParser)
 
 
